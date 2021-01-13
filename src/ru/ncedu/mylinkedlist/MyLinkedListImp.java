@@ -1,5 +1,6 @@
 package ru.ncedu.mylinkedlist;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 /**
@@ -10,6 +11,7 @@ import java.util.NoSuchElementException;
 public class MyLinkedListImp<E> implements ILinkedList<E> {
     private Node<E> head;
     private int nElementLinkList;
+    private E[] array;
 
     /**
      * Static class Node which describes node
@@ -77,7 +79,7 @@ public class MyLinkedListImp<E> implements ILinkedList<E> {
     public void add(int index, E element){
         Node<E> temp = new Node(element);
         Node<E> current = this.head;
-        for(int i=0; i<index && current.getNextNode() != null; i++)
+        for(int i=0; i<index-1 && current.getNextNode() != null; i++)
             current = current.getNextNode();
         temp.setNextNode(current.getNextNode());
         current.setNextNode(temp);
@@ -201,6 +203,24 @@ public class MyLinkedListImp<E> implements ILinkedList<E> {
             i++;
         }
         return array;
+    }
+
+    /**
+     * Returns an array containing all of the elements in this collection;
+     * the runtime type of the returned array is that of the specified array.
+     * @param a Array elements
+     * @return array elements
+     */
+    @SuppressWarnings("unchecked")
+    public E[] toArray(E[] a) {
+        this.array = toArray();
+        if (a.length < size())
+            // Make a new array of a's runtime type, but my contents:
+            return (E[]) Arrays.copyOf(array, size(), a.getClass());
+        System.arraycopy(array, 0, a, 0, size());
+        if (a.length > size())
+            a[size()] = null;
+        return a;
     }
 
     /**

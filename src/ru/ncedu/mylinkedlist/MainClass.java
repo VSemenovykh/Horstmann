@@ -1,6 +1,8 @@
 package ru.ncedu.mylinkedlist;
 
 import ru.ncedu.oopoop2.mycircle.Circle;
+
+import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -129,54 +131,54 @@ public class MainClass {
         /********** MyLinkedListImp ***********/
         System.out.println("----- MyLinkedListImp -----");
         MyLinkedListImp<Integer> mylinkedlist = new MyLinkedListImp<Integer>();
-        //add by elements
+        /*add by elements*/
         System.out.println("add(E elements)" );
         addTimeMyLinkedList( mylinkedlist, N);
-        //add by index and elements
+        /*add by index and elements*/
         System.out.println("add(int index, E elemnts)" );
         addIndexTimeMyLinkedList(500,  mylinkedlist, N);
-        //remove by index
+        /*remove by index*/
         System.out.println("remove(int index)" );
         removeTimeMyLinkedList(500,  mylinkedlist);
-        //clear
+        /*clear*/
         System.out.println("clear");
         clearTimeMyLinkedList(mylinkedlist);
 
         /********** LinkedList ***********/
         System.out.println("----- LinkedList -----");
         LinkedList<Integer> linkedlist = new LinkedList<Integer>();
-        //add by elements
+        /*add by elements*/
         System.out.println("add(E elements)" );
         addTimeLinkedList( linkedlist, N);
-        //add by index and elements
+        /*add by index and elements*/
         System.out.println("add(int index, E elemnts)" );
         addIndexTimeLinkedList(500,  linkedlist, N);
-        //remove by index
+        /*remove by index*/
         System.out.println("remove(int index)" );
         removeTimeLinkedList(500,  linkedlist);
-        //clear
+        /*clear*/
         System.out.println("clear");
         clearTimeLinkedList(linkedlist);
 
         /********** Testing MyLinkedListImp ***********/
-        MyLinkedListImp mylinkedlist2 = new MyLinkedListImp();
+        MyLinkedListImp<Circle> mylinkedlist2 = new MyLinkedListImp<Circle>();
         mylinkedlist2.add(new Circle(2.0, "green"));
         mylinkedlist2.add(new Circle( 2.5, "red"));
         mylinkedlist2.add(new Circle(0.5, "yellow"));
         mylinkedlist2.add(new Circle(2.0, "blue"));
         mylinkedlist2.add(2, new Circle(10.0, "gray"));
 
-        System.out.println("get: " +  mylinkedlist2.get(2));
-        System.out.println("indexOf: " +  mylinkedlist2.indexOf(new Circle(0.5, "yellow")) );
-        System.out.println("remove: " + mylinkedlist2.remove(1));
+        System.out.println("toString: " + mylinkedlist2.toString());
+        System.out.println("get by index = 2: " +  mylinkedlist2.get(2));
+        System.out.println("indexOf by Circle(0.5, yellow): " +  mylinkedlist2.indexOf(new Circle(0.5, "yellow")) );
+        System.out.println("remove by index = 1: " + mylinkedlist2.remove(1));
         System.out.println("toString: " + mylinkedlist2.toString());
         System.out.println("size():  " + mylinkedlist2.size());
 
+        System.out.println("Add element Circle(22.0, ewf) on position 1 : ");
         mylinkedlist2.add(1, new Circle(22.0, "ewf"));
         System.out.println("toString: " + mylinkedlist2.toString());
         System.out.println("size():  " + mylinkedlist2.size());
-
-        mylinkedlist2.set(4, new Circle(5, "fv"));
 
         System.out.println("Iterator");
         Iterator<Circle> itr = mylinkedlist2.iterator();
